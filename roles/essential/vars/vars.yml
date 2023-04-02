@@ -1,0 +1,52 @@
+---
+dnf_packages:
+  - "@development-tools"
+  - "@virtualization"
+  - dnf-plugins-core
+  - aria2
+  - neovim
+  - nano
+  - git
+  - btop
+  - htop
+  - google-chrome-stable
+  - obs-studio
+  - steam
+  - vlc
+  - gnome-tweaks
+  - VirtualBox
+  - virtualbox-guest-additions
+  - java-latest-openjdk
+  - ranger
+  - fzf
+  - ripgrep
+  - autojump
+  - bat
+  - timeshift
+  - ulauncher
+  - zoom
+  - filezilla
+  - curl
+  - wget
+  - unzip
+  - python3
+  - python3-pip
+  - feh
+  - helm
+  - wireguard-tools
+  - xclip
+  - cmatrix
+  - lsd
+  - zsh
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+
+pip_packages:
+  - ansible
+  - ansible-lint
+  - molecule
+  - github3.py
+
+hashicorp_packages:
+  - terraform
+  - vagrant

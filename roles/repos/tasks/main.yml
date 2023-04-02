@@ -1,0 +1,41 @@
+---
+- name: Set git user name
+  ansible.builtin.git_config:
+    name: user.name
+    scope: global
+    value: "{{ github_username }}"
+
+- name: Set git user email
+  ansible.builtin.git_config:
+    name: user.email
+    scope: global
+    value: "{{ github_email }}"
+
+- name: Set git credential helper
+  ansible.builtin.git_config:
+    name: credential.helper
+    scope: global
+    value: store
+
+- name: Get list of repos
+  ansible.builtin.uri:
+    url: https://api.github.com/users/{{ github_username }}/repos
+    method: GET
+    return_content: yes
+  register: repos
+
+- name: Create projects folder
+  ansible.builtin.file:
+    path: "{{ projects_folder }}"
+    state: directory
+    owner: rishav
+    group: rishav
+    mode: 0755
+
+- name: Clone each repo
+  ansible.builtin.git:
+    repo: "{{ item.clone_url }}"
+    dest: "{{ projects_folder }}/{{ item.name }}"
+    version: "{{ item.default_branch }}"
+    clone: yes
+  loop: "{{ repos.json }}"

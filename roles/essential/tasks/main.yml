@@ -1,0 +1,140 @@
+---
+- name: Update dnf packages
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+
+- name: Install dnf packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ dnf_packages }}"
+
+- name: Install pip packages
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pip_packages }}"
+
+- name: Add vscode repository
+  ansible.builtin.yum_repository:
+    name: vscode
+    description: vscode repository
+    baseurl: "https://packages.microsoft.com/yumrepos/vscode"
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgcheck: true
+    enabled: true
+
+- name: Install vscode
+  ansible.builtin.package:
+    name: code
+    state: present
+
+- name: Add onlyoffice repository
+  ansible.builtin.yum_repository:
+    name: onlyoffice
+    description: onlyoffice repository
+    baseurl: "https://download.onlyoffice.com/repo/centos/main/noarch/"
+    gpgkey: "https://download.onlyoffice.com/repo/centos/RPM-GPG-KEY-ONLYOFFICE"
+    gpgcheck: true
+    enabled: true
+
+- name: Install onlyoffice
+  ansible.builtin.package:
+    name: onlyoffice-desktopeditors
+    state: present
+
+- name: Add hashicorp repository
+  ansible.builtin.yum_repository:
+    name: hashicorp
+    description: hashicorp repository
+    baseurl: "https://rpm.releases.hashicorp.com/fedora/$releasever/$basearch/stable"
+    gpgkey: "https://rpm.releases.hashicorp.com/gpg"
+    gpgcheck: true
+    enabled: true
+
+- name: Install hashicorp packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ hashicorp_packages }}"
+
+- name: Get latest release of motrix
+  community.general.github_release:
+    user: "agalwood"
+    repo: "Motrix"
+    action: latest_release
+  register: motrix_release
+
+- name: Download motrix from github
+  ansible.builtin.get_url:
+    url: "Motrix-{{ github_latest_release.tag_name | regex_replace('^v', '') }}.x86_64.rpm"
+    dest: "/tmp/motrix.rpm"
+
+- name: Install motrix
+  ansible.builtin.dnf:
+    name: "/tmp/motrix.rpm"
+    state: present
+
+- name: Remove motrix file
+  ansible.builtin.file:
+    path: "/tmp/motrix.rpm"
+    state: absent
+
+- name: Get latest release of firacode
+  community.general.github_release:
+    user: "ryanoasis"
+    repo: "nerd-fonts"
+    action: latest_release
+  register: firacode_release
+
+- name: Install firacode
+  ansible.builtin.unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ github_latest_release.tag }}/FiraCode.zip"
+    dest: "/usr/share/fonts"
+    remote_src: true
+
+- name: Install firamono
+  ansible.builtin.unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ github_latest_release.tag }}/FiraMono.zip"
+    dest: "/usr/share/fonts"
+    remote_src: true
+
+- name: Enable copr repository for starship
+  community.general.copr:
+    name: "atim/starship"
+    state: enabled
+
+- name: Install starship
+  ansible.builtin.package:
+    name: starship
+    state: present
+
+- name: Download minikube
+  ansible.builtin.get_url:
+    url: "https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm"
+    dest: "/tmp/minikube.rpm"
+
+- name: Install minikube
+  ansible.builtin.dnf:
+    name: "/tmp/minikube.rpm"
+    state: present
+
+- name: Remove minikube file
+  ansible.builtin.file:
+    path: "/tmp/minikube.rpm"
+    state: absent
+
+- name: Add kubectl repository
+  ansible.builtin.yum_repository:
+    name: kubectl
+    description: kubectl repository
+    baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch"
+    gpgkey: "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+    gpgcheck: true
+    enabled: true
+
+- name: Install kubectl
+  ansible.builtin.package:
+    name: kubectl
+    state: present
