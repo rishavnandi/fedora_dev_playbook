@@ -28,8 +28,8 @@
   ansible.builtin.file:
     path: "{{ projects_folder }}"
     state: directory
-    owner: rishav
-    group: rishav
+    owner: "{{ username }}"
+    group: "{{ username }}"
     mode: 0755
 
 - name: Clone each repo
