@@ -1,4 +1,12 @@
 ---
+- name: Download the wallpaper
+  ansible.builtin.get_url:
+    url: "https://github.com/rishavnandi/fedora_dev_playbook/blob/master/wallpapers/abstract.jpg"
+    dest: "/home/{{ username }}/Pictures/abstract.jpg"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
 - name: Set git user name
   ansible.builtin.git_config:
     name: user.name

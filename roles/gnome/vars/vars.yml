@@ -3,21 +3,37 @@ gnome_user: rishav
 
 gnome_extensions:
   - id: 615
+    enable: true
   - id: 3628
+    enable: true
   - id: 3193
+    enable: true
   - id: 517
+    enable: true
   - id: 779
+    enable: true
   - id: 307
+    enable: true
   - id: 5222
+    enable: true
   - id: 4245
+    enable: true
   - id: 1319
+    enable: true
   - id: 5696
+    enable: true
   - id: 4491
+    enable: true
   - id: 5446
+    enable: true
   - id: 3733
+    enable: true
   - id: 4684
+    enable: true
   - id: 19
+    enable: true
   - id: 1460
+    enable: true
 
 gnome_gsettings:
   - schema: org.gnome.desktop.interface
