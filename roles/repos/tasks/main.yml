@@ -26,11 +26,14 @@
 
 - name: Create projects folder
   ansible.builtin.file:
-    path: "{{ projects_folder }}"
+    path: "{{ item }}"
     state: directory
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
+  loop:
+    - "home/{{ username }}/data/"
+    - "{{ projects_folder }}"
 
 - name: Clone each repo
   ansible.builtin.git:

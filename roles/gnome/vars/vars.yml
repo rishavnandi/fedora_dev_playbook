@@ -1,0 +1,309 @@
+---
+gnome_user: rishav
+
+gnome_extensions:
+  - id: 615
+  - id: 3628
+  - id: 3193
+  - id: 517
+  - id: 779
+  - id: 307
+  - id: 5222
+  - id: 4245
+  - id: 1319
+  - id: 5696
+  - id: 4491
+  - id: 5446
+  - id: 3733
+  - id: 4684
+  - id: 19
+  - id: 1460
+
+gnome_gsettings:
+  - schema: org.gnome.desktop.interface
+    key: clock-format
+    value: '"24h"'
+  - schema: org.gnome.desktop.interface
+    key: clock-show-date
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: clock-show-seconds
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: clock-show-weekday
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: color-scheme
+    value: '"prefer-dark"'
+  - schema: org.gnome.desktop.interface
+    key: cursor-blink
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: cursor-blink-time
+    value: 1200
+  - schema: org.gnome.desktop.interface
+    key: cursor-size
+    value: 24
+  - schema: org.gnome.desktop.interface
+    key: cursor-theme
+    value: '"Capitaine Cursors (Gruvbox)"'
+  - schema: org.gnome.desktop.interface
+    key: document-font-name
+    value: '"FiraCode Nerd Font 11"'
+  - schema: org.gnome.desktop.interface
+    key: enable-animations
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: enable-hot-corners
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: font-anti-aliasing
+    value: '"grayscale"'
+  - schema: org.gnome.desktop.interface
+    key: font-hinting
+    value: '"slight"'
+  - schema: org.gnome.desktop.interface
+    key: font-name
+    value: '"FiraCode Nerd Font 11"'
+  - schema: org.gnome.desktop.interface
+    key: font-rgba-order
+    value: '"rgb"'
+  - schema: org.gnome.desktop.interface
+    key: gtk-color-palette
+    value: '"black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"'
+  - schema: org.gnome.desktop.interface
+    key: gtk-enable-primary-paste
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: gtk-theme
+    value: '"Gruvbox-Dark-B"'
+  - schema: org.gnome.desktop.interface
+    key: icon-theme
+    value: '"gruvbox-plus-icon-pack"'
+  - schema: org.gnome.desktop.interface
+    key: monospace-font-name
+    value: '"FiraCode Nerd Font Mono 10"'
+  - schema: org.gnome.desktop.interface
+    key: show-battery-percentage
+    value: true
+  - schema: org.gnome.desktop.interface
+    key: text-scaling-factor
+    value: 1.0
+  - schema: org.gnome.desktop.interface
+    key: toolbar-style
+    value: '"both-horiz"'
+  - schema: org.gnome.desktop.interface
+    key: toolbar-icons-size
+    value: '"large"'
+
+gnome_dconf:
+  - key: /org/gnome/desktop/background/show-desktop-icons
+    value: "false"
+  - key: /org/gnome/GWeather/temperature-unit
+    value: "'centigrade'"
+  - key: /org/gnome/TextEditor/custom-font
+    value: "'FiraCode Nerd Font Mono 12'"
+  - key: /org/gnome/TextEditor/highlight-current-line
+    value: "true"
+  - key: /org/gnome/TextEditor/show-map
+    value: "true"
+  - key: /org/gnome/TextEditor/style-scheme
+    value: "'gruvbox-hard'"
+  - key: /org/gnome/TextEditor/use-system-font
+    value: "false"
+  - key: /org/gnome/desktop/background/picture-uri
+    value: "'file:///home/rishav/.local/share/backgrounds/abstract.jpg'"
+  - key: /org/gnome/desktop/background/picture-uri-dark
+    value: "'file:///home/rishav/.local/share/backgrounds/abstract.jpg'"
+  - key: /org/gnome/desktop/background/picture-options
+    value: "'zoom'"
+  - key: org/gnome/desktop/interface/clock-format
+    value: "'24h'"
+  - key: /org/gnome/desktop/interface/clock-show-seconds
+    value: "true"
+  - key: /org/gnome/desktop/interface/clock-show-weekday
+    value: "true"
+  - key: /org/gnome/desktop/interface/color-scheme
+    value: "'prefer-dark'"
+  - key: /org/gnome/desktop/interface/cursor-theme
+    value: "'Capitaine Cursors (Gruvbox)'"
+  - key: /org/gnome/desktop/interface/document-font-name
+    value: "'FiraCode Nerd Font 11'"
+  - key: /org/gnome/desktop/interface/enable-animations
+    value: "true"
+  - key: /org/gnome/desktop/interface/font-antialiasing
+    value: "'grayscale'"
+  - key: /org/gnome/desktop/interface/font-hinting
+    value: "'slight'"
+  - key: /org/gnome/desktop/interface/font-name
+    value: "'FiraCode Nerd Font 11'"
+  - key: /org/gnome/desktop/interface/gtk-theme
+    value: "'Gruvbox-Dark-B'"
+  - key: /org/gnome/desktop/interface/icon-theme
+    value: "'gruvbox-plus-icon-pack'"
+  - key: /org/gnome/desktop/interface/monospace-font-name
+    value: "'FiraCode Nerd Font Mono 10'"
+  - key: /org/gnome/desktop/interface/show-battery-percentage
+    value: "true"
+  - key: /org/gnome/desktop/peripherals/mouse/speed
+    value: "0.35"
+  - key: /org/gnome/desktop/peripherals/touchpad/send-events
+    value: "'enabled'"
+  - key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
+    value: "true"
+  - key: /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled
+    value: "true"
+  - key: /org/gnome/desktop/peripherals/touchpad/speed
+    value: "0.18"
+  - key: /org/gnome/desktop/sound/event-sounds
+    value: "false"
+  - key: /org/gnome/desktop/sound/allow-volume-above-100-percent
+    value: "true"
+  - key: /org/gnome/desktop/wm/preferences/action-middle-click-titlebar
+    value: "'minimize'"
+  - key: /org/gnome/desktop/wm/preferences/button-layout
+    value: "'appmenu:minimize,maximize,close'"
+  - key: /org/gnome/desktop/wm/preferences/focus-mode
+    value: "'click'"
+  - key: /org/gnome/desktop/wm/preferences/titlebar-font
+    value: "'FiraCode Nerd Font Bold 11'"
+  - key: /org/gnome/mutter/center-new-windows
+    value: "true"
+  - key: /org/gnome/mutter/edge-tiling
+    value: "false"
+  - key: /org/gnome/mutter/overlay-key
+    value: "'Super_L'"
+  - key: /org/gnome/nautilus/preferences/default-folder-viewer
+    value: "'list-view'"
+  - key: /org/gnome/nautilus/preferences/migrated-gtk-settings
+    value: "true"
+  - key: /org/gnome/nautilus/preferences/search-view
+    value: "'list-view'"
+  - key: /org/gnome/nautilus/preferences/window-state/maximized
+    value: "true"
+  - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
+    value: "'<Control>space'"
+  - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
+    value: "'ulauncher-toggle'"
+  - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
+    value: "'ulauncher'"
+  - key: /org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout
+    value: "3600"
+  - key: /org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout
+    value: "900"
+  - key: /org/gnome/settings-daemon/plugins/power/idle-dim
+    value: "false"
+  - key: /org/gnome/shell/favorite-apps
+    value: "['org.gnome.Nautilus.desktop', 'brave-browser.desktop', 'google-chrome.desktop', 'virt-manager.desktop', 'org.gnome.Terminal.desktop', 'code.desktop']"
+  - key: /org/gnome/shell/last-selected-power-profile
+    value: "'performance'"
+  - key: /org/gnome/shell/welcome-dialog-last-shown-version
+    value: "'43.0'"
+  - key: /org/gnome/shell/extensions/arcmenu/custom-menu-button-icon-size
+    value: "24.0"
+  - key: /org/gnome/shell/extensions/arcmenu/distro-icon
+    value: "'2'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-background-color
+    value: "'rgba(48,48,49,0.98)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-border-color
+    value: "'rgb(60,60,60)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-button-appearance
+    value: "'Icon'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-button-icon
+    value: "'Distro_Icon'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-foreground-color
+    value: "'rgb(233,233,233)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-item-active-bg-color
+    value: "'rgba(25,98,163)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-item-active-fg-color
+    value: "'rgb(255,255,255)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-item-hover-bg-color
+    value: "'rgba(25,83,158)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-item-hover-fg-color
+    value: "'rgb(255,255,255)'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-layout
+    value: "'Windows'"
+  - key: /org/gnome/shell/extensions/arcmenu/menu-separator-color
+    value: "'rgb(255,255,255,0.1)'"
+  - key: /org/gnome/shell/extensions/arcmenu/pinned-app-list
+    value: "['', '', 'firefox.desktop', '', '', 'org.gnome.Nautilus.desktop', '', '', 'org.gnome.Terminal.desktop', 'Visual Studio Code', '', 'code.desktop', 'Google Chrome', '', 'google-chrome.desktop', 'Brave Web Browser', '', 'brave-browser.desktop', 'Spotify', '', 'com.spotify.Client.desktop', 'Virtual Machine Manager', '', 'virt-manager.desktop']"
+  - key: /org/gnome/shell/extensions/arcmenu/prefs-visible-page
+    value: "'0'"
+  - key: /org/gnome/shell/extensions/arcmenu/search-entry-border-radius
+    value: "(true, 25)"
+  - key: /org/gnome/shell/extensions/arcmenu/show-activities-button
+    value: "false"
+  - key: /org/gnome/shell/extensions/blur/sigma
+    value: "30"
+  - key: /org/gnome/shell/extensions/clipboard-indicator/history-size
+    value: "100"
+  - key: /org/gnome/shell/extensions/dash-to-dock/autohide
+    value: "true"
+  - key: /org/gnome/shell/extensions/dash-to-dock/background-color
+    value: "'rgb(29,32,33)'"
+  - key: /org/gnome/shell/extensions/dash-to-dock/background-opacity
+    value: "0.0"
+  - key: /org/gnome/shell/extensions/dash-to-dock/click-action
+    value: "'minimize'"
+  - key: /org/gnome/shell/extensions/dash-to-dock/custom-background-color
+    value: "false"
+  - key: /org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink
+    value: "true"
+  - key: /org/gnome/shell/extensions/dash-to-dock/customize-alphas
+    value: "true"
+  - key: /org/gnome/shell/extensions/dash-to-dock/dock-max-icon-size
+    value: "38"
+  - key: /org/gnome/shell/extensions/dash-to-dock/dock-fixed
+    value: "false"
+  - key: /org/gnome/shell/extensions/dash-to-dock/dock-position
+    value: "'BOTTOM'"
+  - key: /org/gnome/shell/extensions/dash-to-dock/extend-height
+    value: "false"
+  - key: /org/gnome/shell/extensions/dash-to-dock/show-mounts
+    value: "false"
+  - key: /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button
+    value: "false"
+  - key: /org/gnome/shell/extensions/dash-to-dock/show-trash
+    value: "false"
+  - key: /org/gnome/shell/extensions/dash-to-dock/transparency-mode
+    value: "'DEFAULT'"
+  - key: /org/gnome/shell/extensions/dash-to-dock/intellihide
+    value: "false"
+  - key: /org/gnome/shell/extensions/gsconnect/name
+    value: "'msi'"
+  - key: /org/gnome/shell/extensions/user-theme/name
+    value: "'Gruvbox-Dark-B-GS'"
+  - key: /org/gnome/shell/extensions/vitals/hot-sensors
+    value: "['__network-rx_max__', '__network-rx_ses__', '_processor_usage_', '__temperature_avg__', '_memory_available_']"
+  - key: /org/gnome/terminal/legacy/profiles:/list
+    value: "['6e13f97f-5d28-45bd-9402-1df5b3a1f48e']"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/allow-bold
+    value: "true"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/background-color
+    value: "'#282828282828'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/background-transparency-percent
+    value: "20"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/cursor-background-color
+    value: "'#EBEBDBDBB2B2'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/cursor-blink-mode
+    value: "'on'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/cursor-foreground-color
+    value: "'#282828282828'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/cursor-shape
+    value: "'ibeam'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/font
+    value: "'FiraCode Nerd Font Mono 13'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/palette
+    value: "['#282828282828', '#CCCC24241D1D', '#989897971A1A', '#D7D799992121', '#454585858888', '#B1B162628686', '#68689D9D6A6A', '#A8A899998484', '#929283837474', '#FBFB49493434', '#B8B8BBBB2626', '#FAFABDBD2F2F', '#8383A5A59898', '#D3D386869B9B', '#8E8EC0C07C7C', '#EBEBDBDBB2B2']"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/scrollbar-policy
+    value: "'never'"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/use-system-font
+    value: "false"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/use-theme-colors
+    value: "false"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/use-theme-transparency
+    value: "false"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/use-transparent-background
+    value: "true"
+  - key: /org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/visible-name
+    value: "'Gruvbox Dark'"

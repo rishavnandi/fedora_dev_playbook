@@ -2,4 +2,4 @@
 username: rishav
 github_username: rishavnandi
 github_email: rishavnandi2@gmail.com
-projects_folder: /home/{{ username }}/projects
+projects_folder: /home/{{ username }}/data/projects

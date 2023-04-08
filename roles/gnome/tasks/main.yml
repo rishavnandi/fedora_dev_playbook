@@ -1,0 +1,114 @@
+---
+- name: Parse Gnome Shell version
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      gnome-shell --version | sed 's/^[^0-9.]*//' | sed 's/[^0-9]*$//'
+    executable: /bin/bash
+  register: r_gnome_extension_parse_shell_version
+  changed_when: false
+
+- name: Set Gnome Shell version as parameter
+  ansible.builtin.set_fact:
+    gnome_shell_version: "{{ r_gnome_extension_parse_shell_version.stdout }}"
+
+- name: Check if Gnome Shell was detected
+  ansible.builtin.debug:
+    msg: "Sorry - no Gnome Shell detected... exiting"
+  failed_when: true
+  when: not r_gnome_extension_parse_shell_version.stdout
+
+- name: Load Gnome extension information
+  include_tasks: get_extension_info.yml
+  loop: "{{ gnome_extensions|default([]) }}"
+
+- name: Create a list of current enabled extensions
+  become_user: "{{ gnome_user }}"
+  ansible.builtin.shell: gnome-extensions list --enabled > /tmp/before.txt
+
+- name: Download GNOME Shell extensions
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    dest: "/tmp/{{ item.name }}.zip"
+  loop: "{{ gnome_extensions_full|default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Create GNOME extension directories
+  ansible.builtin.file:
+    path: /home/{{ gnome_user }}/.local/share/gnome-shell/extensions/{{ item.name }}
+    state: directory
+  become_user: "{{ gnome_user }}"
+  loop: "{{ gnome_extensions_full|default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+
+- name: Unzip GNOME extensions
+  ansible.builtin.unarchive:
+    src: "/tmp/{{ item.name }}.zip"
+    dest: "/home/{{ gnome_user }}/.local/share/gnome-shell/extensions/{{ item.name }}"
+    remote_src: true
+  become_user: "{{ gnome_user }}"
+  loop: "{{ gnome_extensions_full|default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  register: unzipped_extension
+
+- name: Restart Gnome Shell to ensure all extensions are visible
+  become_user: "{{ gnome_user }}"
+  ansible.builtin.command:
+    cmd: killall -3 gnome-shell
+  when: unzipped_extension.changed
+
+- name: Enable extensions
+  ansible.builtin.command: gnome-extensions enable {{ item.name }}
+  become_user: "{{ gnome_user }}"
+  when: item.enable | default(false)
+  loop: "{{ gnome_extensions_full | default([]) }}"
+  loop_control:
+    label: "{{ item.name }}"
+  changed_when: false
+  ignore_errors: true
+
+- name: Create a list of enabled extensions
+  become_user: "{{ gnome_user }}"
+  ansible.builtin.shell: gnome-extensions list --enabled > /tmp/after.txt
+  changed_when: false
+
+- name: Compare the list of enabled extensions
+  ansible.builtin.shell: diff --ignore-all-space /tmp/before.txt /tmp/after.txt|awk '/[<>]/{print $2}'
+  register: difference
+  changed_when: false
+
+- debug:
+    msg: "Changes in enabled extensions: {{ difference.stdout }}"
+  when: difference.stdout
+
+- name: Clean up list
+  become_user: "{{ gnome_user }}"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  changed_when: false
+  loop:
+    - /tmp/before.txt
+    - /tmp/after.txt
+
+- name: Modify application settings using gsettings
+  ansible.builtin.command:
+    cmd: gsettings {{ ('--schemadir ' + item.schemadir) if 'schemadir' in item else '' }} set {{ item.schema }} {{ item.key }} {{ item.value }}
+  become_user: "{{ gnome_user }}"
+  changed_when: false
+  loop: "{{ gnome_gsettings|default([]) }}"
+  loop_control:
+    label: "{{ item.key }}"
+
+- name: Modify application settings using dconf
+  community.general.dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  become_user: "{{ gnome_user }}"
+  loop: "{{ gnome_dconf|default([]) }}"
+  loop_control:
+    label: "{{ item.key }}"
+  changed_when: false

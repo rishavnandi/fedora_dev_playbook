@@ -14,6 +14,7 @@ dnf_packages:
   - steam
   - vlc
   - gnome-tweaks
+  - gnome-extensions-app
   - VirtualBox
   - virtualbox-guest-additions
   - java-latest-openjdk
@@ -31,6 +32,7 @@ dnf_packages:
   - unzip
   - python3
   - python3-pip
+  - python3-psutil
   - feh
   - helm
   - wireguard-tools

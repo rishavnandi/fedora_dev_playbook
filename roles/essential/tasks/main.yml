@@ -68,7 +68,7 @@
 
 - name: Download motrix from github
   ansible.builtin.get_url:
-    url: "Motrix-{{ github_latest_release.tag_name | regex_replace('^v', '') }}.x86_64.rpm"
+    url: "Motrix-{{ github_latest_release.tag | regex_replace('^v', '') }}.x86_64.rpm"
     dest: "/tmp/motrix.rpm"
 
 - name: Install motrix
@@ -93,12 +93,18 @@
     src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ github_latest_release.tag }}/FiraCode.zip"
     dest: "/usr/share/fonts"
     remote_src: true
+    mode: 0774
 
 - name: Install firamono
   ansible.builtin.unarchive:
     src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ github_latest_release.tag }}/FiraMono.zip"
     dest: "/usr/share/fonts"
     remote_src: true
+    mode: 0774
+
+- name: Refresh font list
+  ansible.builtin.command: fc-cache -fv
+  changed_when: false
 
 - name: Enable copr repository for starship
   community.general.copr:
@@ -138,3 +144,25 @@
   ansible.builtin.package:
     name: kubectl
     state: present
+
+- name: Get wiregui latest release
+  community.general.github_release:
+    user: "Devsfy"
+    repo: "wiregui"
+    action: latest_release
+  register: wiregui_release
+
+- name: Download wiregui
+  ansible.builtin.get_url:
+    url: "https://github.com/Devsfy/wiregui/releases/download/{{ wiregui_release.tag }}/*.rpm"
+    dest: "/tmp/wiregui.rpm"
+
+- name: Install wiregui
+  ansible.builtin.dnf:
+    name: "/tmp/wiregui.rpm"
+    state: present
+
+- name: Remove wiregui file
+  ansible.builtin.file:
+    path: "/tmp/wiregui.rpm"
+    state: absent
