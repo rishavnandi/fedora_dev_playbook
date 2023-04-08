@@ -19,18 +19,20 @@
   when: not r_gnome_extension_parse_shell_version.stdout
 
 - name: Load Gnome extension information
-  include_tasks: get_extension_info.yml
+  ansible.builtin.include_tasks: get_extension_info.yml
   loop: "{{ gnome_extensions|default([]) }}"
 
 - name: Create a list of current enabled extensions
   become_user: "{{ gnome_user }}"
   ansible.builtin.shell: gnome-extensions list --enabled > /tmp/before.txt
+  changed_when: false
 
 - name: Download GNOME Shell extensions
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "/tmp/{{ item.name }}.zip"
-  loop: "{{ gnome_extensions_full|default([]) }}"
+    mode: 0774
+  loop: "{{ gnome_extensions_full | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
 
@@ -38,8 +40,9 @@
   ansible.builtin.file:
     path: /home/{{ gnome_user }}/.local/share/gnome-shell/extensions/{{ item.name }}
     state: directory
+    mode: 0774
   become_user: "{{ gnome_user }}"
-  loop: "{{ gnome_extensions_full|default([]) }}"
+  loop: "{{ gnome_extensions_full | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
 
@@ -49,7 +52,7 @@
     dest: "/home/{{ gnome_user }}/.local/share/gnome-shell/extensions/{{ item.name }}"
     remote_src: true
   become_user: "{{ gnome_user }}"
-  loop: "{{ gnome_extensions_full|default([]) }}"
+  loop: "{{ gnome_extensions_full | default([]) }}"
   loop_control:
     label: "{{ item.name }}"
   register: unzipped_extension
@@ -58,6 +61,7 @@
   become_user: "{{ gnome_user }}"
   ansible.builtin.command:
     cmd: killall -3 gnome-shell
+  changed_when: false
   when: unzipped_extension.changed
 
 - name: Enable extensions
@@ -80,7 +84,8 @@
   register: difference
   changed_when: false
 
-- debug:
+- name: Show changes in enabled extensions
+  ansible.builtin.debug:
     msg: "Changes in enabled extensions: {{ difference.stdout }}"
   when: difference.stdout
 
@@ -99,7 +104,7 @@
     cmd: gsettings {{ ('--schemadir ' + item.schemadir) if 'schemadir' in item else '' }} set {{ item.schema }} {{ item.key }} {{ item.value }}
   become_user: "{{ gnome_user }}"
   changed_when: false
-  loop: "{{ gnome_gsettings|default([]) }}"
+  loop: "{{ gnome_gsettings | default([]) }}"
   loop_control:
     label: "{{ item.key }}"
 
@@ -108,7 +113,7 @@
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   become_user: "{{ gnome_user }}"
-  loop: "{{ gnome_dconf|default([]) }}"
+  loop: "{{ gnome_dconf | default([]) }}"
   loop_control:
     label: "{{ item.key }}"
   changed_when: false

@@ -1,0 +1,17 @@
+---
+- name: Configure Fedora Workstation
+  hosts: all
+  become: true
+
+  roles:
+    - role: essential
+      tags: essential
+
+    - role: repos
+      tags: repos
+
+    - role: docker
+      tags: docker
+
+    - role: gnome
+      tags: gnome

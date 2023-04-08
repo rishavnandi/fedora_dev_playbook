@@ -8,19 +8,19 @@
     group: "{{ username }}"
 
 - name: Set git user name
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: user.name
     scope: global
     value: "{{ github_username }}"
 
 - name: Set git user email
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: user.email
     scope: global
     value: "{{ github_email }}"
 
 - name: Set git credential helper
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: credential.helper
     scope: global
     value: store
@@ -29,7 +29,7 @@
   ansible.builtin.uri:
     url: https://api.github.com/users/{{ github_username }}/repos
     method: GET
-    return_content: yes
+    return_content: true
   register: repos
 
 - name: Create projects folder
@@ -48,5 +48,5 @@
     repo: "{{ item.clone_url }}"
     dest: "{{ projects_folder }}/{{ item.name }}"
     version: "{{ item.default_branch }}"
-    clone: yes
+    clone: true
   loop: "{{ repos.json }}"

@@ -1,0 +1,7 @@
+---
+skip_list:
+  - 'no-handler'
+  - 'risky-shell-pipe'
+  - 'package-latest'
+  - 'ignore-errors'
+  - 'jinja[spacing]'

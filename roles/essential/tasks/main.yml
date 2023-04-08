@@ -70,6 +70,7 @@
   ansible.builtin.get_url:
     url: "Motrix-{{ github_latest_release.tag | regex_replace('^v', '') }}.x86_64.rpm"
     dest: "/tmp/motrix.rpm"
+    mode: 0774
 
 - name: Install motrix
   ansible.builtin.dnf:
@@ -120,6 +121,7 @@
   ansible.builtin.get_url:
     url: "https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm"
     dest: "/tmp/minikube.rpm"
+    mode: 0774
 
 - name: Install minikube
   ansible.builtin.dnf:
@@ -156,6 +158,7 @@
   ansible.builtin.get_url:
     url: "https://github.com/Devsfy/wiregui/releases/download/{{ wiregui_release.tag }}/*.rpm"
     dest: "/tmp/wiregui.rpm"
+    mode: 0774
 
 - name: Install wiregui
   ansible.builtin.dnf:
