@@ -96,6 +96,7 @@
     dest: "/usr/share/fonts"
     remote_src: true
     mode: 0774
+    changed_when: false
 
 - name: Install firamono
   ansible.builtin.unarchive:
@@ -103,6 +104,7 @@
     dest: "/usr/share/fonts"
     remote_src: true
     mode: 0774
+    changed_when: false
 
 - name: Refresh font list
   ansible.builtin.command: fc-cache -fv
