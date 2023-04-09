@@ -76,6 +76,7 @@
   ansible.builtin.dnf:
     name: "/tmp/motrix.rpm"
     state: present
+    disable_gpg_check: true
 
 - name: Remove motrix file
   ansible.builtin.file:
