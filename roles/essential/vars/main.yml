@@ -9,7 +9,6 @@ dnf_packages:
   - git
   - btop
   - htop
-  - google-chrome-stable
   - obs-studio
   - steam
   - vlc
@@ -25,7 +24,6 @@ dnf_packages:
   - bat
   - timeshift
   - ulauncher
-  - zoom
   - filezilla
   - curl
   - wget
