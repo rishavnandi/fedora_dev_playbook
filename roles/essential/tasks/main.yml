@@ -153,7 +153,7 @@
 
 - name: Download wiregui
   ansible.builtin.get_url:
-    url: "https://github.com/Devsfy/wiregui/releases/download/{{ wiregui_release.tag }}/wiregui-{{ wiregui_release.tag }}.x86_64.rpm"
+    url: "https://github.com/Devsfy/wiregui/releases/download/{{ wiregui_release.tag }}/wiregui-{{ wiregui_release.tag }}-1.x86_64.rpm"
     dest: "/tmp/wiregui.rpm"
     mode: 0774
 
