@@ -20,7 +20,7 @@
 
 - name: Load Gnome extension information
   ansible.builtin.include_tasks: get_extension_info.yml
-  loop: "{{ gnome_extensions|default([]) }}"
+  loop: "{{ gnome_extensions | default([]) }}"
 
 - name: Create a list of current enabled extensions
   become_user: "{{ gnome_user }}"
@@ -117,3 +117,89 @@
   loop_control:
     label: "{{ item.key }}"
   changed_when: false
+
+- name: Create .themes and .icons directories
+  ansible.builtin.file:
+    path: "/home/{{ gnome_user }}/{{ item }}"
+    state: directory
+    mode: 0774
+  loop:
+    - .themes
+    - .icons
+
+- name: Download gruvbox icons
+  ansible.builtin.git:
+    repo: "https://github.com/SylEleuth/gruvbox-plus-icon-pack.git"
+    dest: "/home/{{ gnome_user }}/.icons/gruvbox-plus-icon-pack"
+    clone: true
+    version: master
+
+- name: Get gruvbox cursors latest release
+  community.general.github_release:
+    user: "sainnhe"
+    repo: "capitaine-cursors"
+    action: latest_release
+  register: gruvbox_cursors_latest_release
+
+- name: Download gruvbox cursors
+  ansible.builtin.unarchive:
+    src: "https://github.com/sainnhe/capitaine-cursors/releases/tag/{{ gruvbox_cursors_latest_release.tag }}/Linux.zip"
+    dest: "/home/{{ gnome_user }}/.icons"
+    remote_src: true
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774
+
+- name: Download gtk themes
+  ansible.builtin.git:
+    repo: "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme.git"
+    dest: "/tmp/Gruvbox-GTK-Theme"
+    clone: true
+    version: master
+
+- name: Move gtk themes to .themes
+  ansible.builtin.copy:
+    src: "/tmp/Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B/*"
+    dest: "/home/{{ gnome_user }}/.themes/Gruvbox-Dark-B"
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774
+
+- name: Create gtk4 directory
+  ansible.builtin.file:
+    path: "/home/{{ gnome_user }}/.config/gtk-4.0"
+    state: directory
+    mode: 0774
+
+- name: Copy gtk4 themes
+  ansible.builtin.copy:
+    src: "/tmp/Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B/gtk-4.0/*"
+    dest: "/home/{{ gnome_user }}/.config/gtk-4.0"
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774
+
+- name: Copy gnome-text-editor theme
+  ansible.builtin.copy:
+    src: "/tmp/Gruvbox-GTK-Theme/extra/text-editor/gruvbox-hard.xml"
+    dest: "/usr/share/gnome-text-editor/styles/gruvbox-hard.xml"
+    mode: 0774
+
+- name: Create ulauncher themes directory
+  ansible.builtin.file:
+    path: "/home/{{ gnome_user }}/.config/ulauncher/user-themes"
+    state: directory
+    mode: 0774
+
+- name: Copy ulauncher theme
+  ansible.builtin.copy:
+    src: "/tmp/Gruvbox-GTK-Theme/extra/ulauncher/Gruvbox_Dark/*"
+    dest: "/home/{{ gnome_user }}/.config/ulauncher/user-themes/Gruvbox_Dark"
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774
+
+- name: Remove cloned theme directory
+  ansible.builtin.file:
+    path: "/tmp/Gruvbox-GTK-Theme"
+    state: absent

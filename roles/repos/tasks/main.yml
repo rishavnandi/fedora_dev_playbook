@@ -1,8 +1,25 @@
 ---
 - name: Download the wallpaper
   ansible.builtin.get_url:
-    url: "https://github.com/rishavnandi/fedora_dev_playbook/blob/master/wallpapers/abstract.jpg"
-    dest: "/home/{{ username }}/Pictures/abstract.jpg"
+    url: "https://raw.githubusercontent.com/rishavnandi/fedora_dev_playbook/master/wallpapers/{{ item }}"
+    dest: "/home/{{ username }}/Pictures/{{ item }}"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  loop:
+    - "abstract.jpg"
+    - "blair.jpg"
+    - "exmachina.jpg"
+    - "gruv.jpg"
+    - "mr_wick.jpg"
+    - "predator.jpg"
+    - "witcher.jpg"
+    - "woods.jpg"
+
+- name: Copy wallpapers to background folder
+  ansible.builtin.copy:
+    src: "/home/{{ username }}/Pictures/"
+    dest: "home/{{ username }}/.local/share/backgrounds/"
     mode: 0644
     owner: "{{ username }}"
     group: "{{ username }}"
@@ -38,7 +55,7 @@
     state: directory
     owner: "{{ username }}"
     group: "{{ username }}"
-    mode: 0755
+    mode: 0744
   loop:
     - "home/{{ username }}/data/"
     - "{{ projects_folder }}"

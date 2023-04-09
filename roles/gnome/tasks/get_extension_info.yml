@@ -19,5 +19,5 @@
 
 - name: Add original gnome_extensions item to gnome_extensions_full
   ansible.builtin.set_fact:
-    gnome_extensions_full: "{{ gnome_extensions_full | default([]) + [ item ] }}"
+    gnome_extensions_full: "{{ gnome_extensions_full | default([]) + [item] }}"
   when: "'skipped' in r_gnome_extension_info"
