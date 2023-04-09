@@ -163,6 +163,7 @@
   ansible.builtin.dnf:
     name: "/tmp/wiregui.rpm"
     state: present
+    disable_gpg_check: true
 
 - name: Remove wiregui file
   ansible.builtin.file:
