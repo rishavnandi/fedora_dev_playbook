@@ -68,7 +68,7 @@
 
 - name: Download motrix from github
   ansible.builtin.get_url:
-    url: "Motrix-{{ motrix_release.tag | regex_replace('^v', '') }}.x86_64.rpm"
+    url: "https://github.com/agalwood/Motrix/releases/download/{{ motrix_release.tag }}/Motrix-{{ motrix_release.tag | regex_replace('^v', '') }}.x86_64.rpm"
     dest: "/tmp/motrix.rpm"
     mode: 0774
 
