@@ -14,6 +14,7 @@
     dest: "/home/{{ gnome_user }}/.icons/gruvbox-plus-icon-pack"
     clone: true
     version: master
+    force: true
 
 - name: Get gruvbox cursors latest release
   community.general.github_release:
@@ -37,6 +38,7 @@
     dest: "/tmp/Gruvbox-GTK-Theme"
     clone: true
     version: master
+    force: true
 
 - name: Move gtk themes to .themes
   ansible.builtin.copy:
