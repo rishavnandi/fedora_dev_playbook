@@ -94,17 +94,17 @@
   ansible.builtin.unarchive:
     src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ firacode_release.tag }}/FiraCode.zip"
     dest: "/usr/share/fonts"
+    creates: "/usr/share/fonts/Fira Code"
     remote_src: true
     mode: 0774
-    changed_when: false
 
 - name: Install firamono
   ansible.builtin.unarchive:
     src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ firacode_release.tag }}/FiraMono.zip"
     dest: "/usr/share/fonts"
+    creates: "/usr/share/fonts/Fira Mono"
     remote_src: true
     mode: 0774
-    changed_when: false
 
 - name: Refresh font list
   ansible.builtin.command: fc-cache -fv
