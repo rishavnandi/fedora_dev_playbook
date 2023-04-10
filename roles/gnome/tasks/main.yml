@@ -163,6 +163,10 @@
   changed_when: false
   when: unzipped_extension.changed
 
+- name: Wait for gnome shell to restart
+  ansible.builtin.wait_for:
+    timeout: 10
+
 - name: Enable extensions
   ansible.builtin.command: gnome-extensions enable {{ item.name }}
   become_user: "{{ gnome_user }}"
