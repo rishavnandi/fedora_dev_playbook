@@ -382,50 +382,50 @@ gnome_gsettings:
     key: hot-sensors
     value: "['__network-rx_max__', '__network-rx_ses__', '_processor_usage_', '__temperature_avg__', '_memory_available_']"
   - schema: org.gnome.Terminal.ProfilesList
+    key: list
     value: "['6e13f97f-5d28-45bd-9402-1df5b3a1f48e']"
-    present: true
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: allow-bold
     value: "true"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: background-color
     value: "'#282828282828'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: background-transparency-percent
     value: "20"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: cursor-background-color
     value: "'#EBEBDBDBB2B2'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: cursor-blink-mode
     value: "'on'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: cursor-foreground-color
     value: "'#282828282828'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: cursor-shape
     value: "'ibeam'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: font
     value: "'FiraCode Nerd Font Mono 13'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: palette
     value: "['#282828282828', '#CCCC24241D1D', '#989897971A1A', '#D7D799992121', '#454585858888', '#B1B162628686', '#68689D9D6A6A', '#A8A899998484', '#929283837474', '#FBFB49493434', '#B8B8BBBB2626', '#FAFABDBD2F2F', '#8383A5A59898', '#D3D386869B9B', '#8E8EC0C07C7C', '#EBEBDBDBB2B2']"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: scrollbar-policy
     value: "'never'"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: use-system-font
     value: "false"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: use-theme-colors
     value: "false"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: use-theme-transparency
     value: "false"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: use-transparent-background
     value: "true"
-  - schema: org.gnome.terminal.legacy.profiles:.:6e13f97f-5d28-45bd-9402-1df5b3a1f48e
+  - schema: org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:6e13f97f-5d28-45bd-9402-1df5b3a1f48e/
     key: visible-name
     value: "'Gruvbox Dark'"
