@@ -62,6 +62,12 @@
     group: "{{ gnome_user }}"
     mode: 0774
 
+- name: Create gnome-text-editor themes directory
+  ansible.builtin.file:
+    path: "/usr/share/gnome-text-editor/styles"
+    state: directory
+    mode: 0774
+
 - name: Copy gnome-text-editor theme
   ansible.builtin.copy:
     src: "/tmp/Gruvbox-GTK-Theme/extra/text-editor/gruvbox-hard.xml"
