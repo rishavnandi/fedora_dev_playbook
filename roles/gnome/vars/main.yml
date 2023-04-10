@@ -366,7 +366,7 @@ gnome_dconf:
     value: "false"
     present: true
   - key: /org/gnome/shell/extensions/dash-to-dock/transparency-mode
-    value: "'DEFAULT'"
+    value: "DEFAULT"
     present: true
   - key: /org/gnome/shell/extensions/dash-to-dock/intellihide
     value: "false"
