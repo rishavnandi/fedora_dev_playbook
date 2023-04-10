@@ -40,7 +40,7 @@
 
 - name: Move gtk themes to .themes
   ansible.builtin.copy:
-    src: "/tmp/Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B/*"
+    src: "/tmp/Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B/"
     dest: "/home/{{ gnome_user }}/.themes/Gruvbox-Dark-B"
     remote_src: true
     owner: "{{ gnome_user }}"
@@ -55,7 +55,7 @@
 
 - name: Copy gtk4 themes
   ansible.builtin.copy:
-    src: "/tmp/Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B/gtk-4.0/*"
+    src: "/tmp/Gruvbox-GTK-Theme/themes/Gruvbox-Dark-B/gtk-4.0/"
     dest: "/home/{{ gnome_user }}/.config/gtk-4.0"
     remote_src: true
     owner: "{{ gnome_user }}"
@@ -77,7 +77,7 @@
 
 - name: Copy ulauncher theme
   ansible.builtin.copy:
-    src: "/tmp/Gruvbox-GTK-Theme/extra/ulauncher/Gruvbox_Dark/*"
+    src: "/tmp/Gruvbox-GTK-Theme/extra/ulauncher/Gruvbox_Dark/"
     dest: "/home/{{ gnome_user }}/.config/ulauncher/user-themes/Gruvbox_Dark"
     remote_src: true
     owner: "{{ gnome_user }}"
