@@ -4,6 +4,8 @@
     path: "/home/{{ gnome_user }}/{{ item }}"
     state: directory
     mode: 0774
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
   loop:
     - .themes
     - .icons
@@ -14,7 +16,6 @@
     dest: "/home/{{ gnome_user }}/.icons/gruvbox-plus-icon-pack"
     clone: true
     version: master
-    force: true
 
 - name: Get gruvbox cursors latest release
   community.general.github_release:
@@ -27,6 +28,7 @@
   ansible.builtin.unarchive:
     src: "https://github.com/sainnhe/capitaine-cursors/releases/download/{{ gruvbox_cursors_latest_release.tag }}/Linux.zip"
     dest: "/home/{{ gnome_user }}/.icons"
+    creates: "/home/{{ gnome_user }}/.icons/Capitaine Cursors"
     remote_src: true
     owner: "{{ gnome_user }}"
     group: "{{ gnome_user }}"
@@ -38,7 +40,6 @@
     dest: "/tmp/Gruvbox-GTK-Theme"
     clone: true
     version: master
-    force: true
 
 - name: Move gtk themes to .themes
   ansible.builtin.copy:
@@ -217,12 +218,3 @@
     label: "{{ item.key }}"
   changed_when: false
   ignore_errors: true
-
-- name: Make sure {{ gnome_user }} owns home directory
-  ansible.builtin.file:
-    path: "/home/{{ gnome_user }}"
-    owner: "{{ gnome_user }}"
-    group: "{{ gnome_user }}"
-    recurse: true
-    state: directory
-    mode: 0774
