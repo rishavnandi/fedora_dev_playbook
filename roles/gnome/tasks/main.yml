@@ -214,6 +214,7 @@
   loop_control:
     label: "{{ item.key }}"
   changed_when: false
+  ignore_errors: true
 
 - name: Make sure {{ gnome_user }} owns home directory
   ansible.builtin.file:
