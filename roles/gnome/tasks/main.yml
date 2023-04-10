@@ -214,3 +214,12 @@
   loop_control:
     label: "{{ item.key }}"
   changed_when: false
+
+- name: Make sure {{ gnome_user }} owns home directory
+  ansible.builtin.file:
+    path: "/home/{{ gnome_user }}"
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    recurse: true
+    state: directory
+    mode: 0774

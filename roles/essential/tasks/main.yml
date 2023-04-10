@@ -94,7 +94,7 @@
   ansible.builtin.unarchive:
     src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ firacode_release.tag }}/FiraCode.zip"
     dest: "/usr/share/fonts"
-    creates: "/usr/share/fonts/Fira Code"
+    creates: "/usr/share/fonts/Fira Code Regular Nerd Font Complete.ttf"
     remote_src: true
     mode: 0774
 
@@ -102,7 +102,7 @@
   ansible.builtin.unarchive:
     src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ firacode_release.tag }}/FiraMono.zip"
     dest: "/usr/share/fonts"
-    creates: "/usr/share/fonts/Fira Mono"
+    creates: "/usr/share/fonts/Fura Mono Regular Nerd Font Complete.otf"
     remote_src: true
     mode: 0774
 
