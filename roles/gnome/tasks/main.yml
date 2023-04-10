@@ -24,7 +24,7 @@
 
 - name: Download gruvbox cursors
   ansible.builtin.unarchive:
-    src: "https://github.com/sainnhe/capitaine-cursors/releases/tag/{{ gruvbox_cursors_latest_release.tag }}/Linux.zip"
+    src: "https://github.com/sainnhe/capitaine-cursors/releases/download/{{ gruvbox_cursors_latest_release.tag }}/Linux.zip"
     dest: "/home/{{ gnome_user }}/.icons"
     remote_src: true
     owner: "{{ gnome_user }}"
