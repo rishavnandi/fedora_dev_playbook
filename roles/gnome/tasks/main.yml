@@ -203,6 +203,7 @@
   loop: "{{ gnome_gsettings | default([]) }}"
   loop_control:
     label: "{{ item.key }}"
+  ignore_errors: true
 
 - name: Modify application settings using dconf
   community.general.dconf:
