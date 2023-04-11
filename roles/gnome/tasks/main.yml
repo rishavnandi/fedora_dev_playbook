@@ -222,3 +222,30 @@
     label: "{{ item.key }}"
   changed_when: false
   ignore_errors: true
+
+- name: Configure zsh
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: /home/{{ gnome_user }}/.zshrc
+    force: true
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774
+
+- name: Configure bash
+  ansible.builtin.template:
+    src: bashrc.j2
+    dest: /home/{{ gnome_user }}/.bashrc
+    force: true
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774
+
+- name: Configure starship
+  ansible.builtin.template:
+    src: starship.toml.j2
+    dest: /home/{{ gnome_user }}/.config/starship.toml
+    force: true
+    owner: "{{ gnome_user }}"
+    group: "{{ gnome_user }}"
+    mode: 0774

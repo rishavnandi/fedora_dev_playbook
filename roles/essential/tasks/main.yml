@@ -169,3 +169,16 @@
   ansible.builtin.file:
     path: "/tmp/wiregui.rpm"
     state: absent
+
+- name: Get nitch fetch latest release
+  community.github.githb_release:
+    user: "ssleert"
+    repo: "nitch"
+    action: latest_release
+  register: nitch_release
+
+- name: Download nitch fetch binary
+  ansible.builtin.get_url:
+    url: "https://github.com/unxsh/nitch/releases/download/{{ nitch_release.tag }}/nitchNerd"
+    dest: "/usr/local/bin/nitch"
+    mode: 0774
